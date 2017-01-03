@@ -43,6 +43,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         gpxURL = NSURL(string: "http://cs193p.stanford.edu/Vacation.gpx") as URL?
+        title = "Trax You"
     }
 
     //MARK: MKMapView delegates
@@ -78,6 +79,12 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.leftCalloutAccessoryView {
+            performSegue(withIdentifier: Constants.ShowImageSegue, sender: view)
+        }
+    }
 
 
     // MARK: Constants
@@ -89,4 +96,41 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
         static let EditUserWaypoint = "Edit Waypoint"
     }
 
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination.contentViewController
+        let annotationView = sender as? MKAnnotationView
+        let waypoint = annotationView?.annotation as? GPX.Waypoint
+        
+        if segue.identifier == Constants.ShowImageSegue {
+            if let ivc = destination as? ImageViewController {
+                ivc.imageURL = waypoint?.imageURL as NSURL?
+                ivc.title = waypoint?.name
+            }
+        }
+     /*   else if segue.identifier == Constants.EditUserWaypoint {
+            if let editableWaypoint = waypoint as? EditableWaypoint,
+                let ewvc = destination as? EditWaypointViewController {
+                if let ppc = ewvc.popoverPresentationController {
+                    ppc.sourceRect = annotationView!.frame
+                    ppc.delegate = self
+                }
+                ewvc.waypointToEdit = editableWaypoint
+            }
+        }
+ */
+    }
+
 }
+
+extension UIViewController {
+    var contentViewController: UIViewController {
+        if let navcon = self as? UINavigationController {
+            return navcon.visibleViewController ?? navcon
+        } else {
+            return self
+        }
+    }
+}
+
