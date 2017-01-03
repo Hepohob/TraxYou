@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		477E2BDF1E1BCF22000EA12B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BDE1E1BCF22000EA12B /* AppDelegate.swift */; };
-		477E2BE11E1BCF22000EA12B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BE01E1BCF22000EA12B /* ViewController.swift */; };
 		477E2BE41E1BCF22000EA12B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477E2BE21E1BCF22000EA12B /* Main.storyboard */; };
 		477E2BE61E1BCF22000EA12B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 477E2BE51E1BCF22000EA12B /* Assets.xcassets */; };
 		477E2BE91E1BCF22000EA12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477E2BE71E1BCF22000EA12B /* LaunchScreen.storyboard */; };
+		477E2BF21E1BCFDA000EA12B /* GPXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BF11E1BCFDA000EA12B /* GPXViewController.swift */; };
+		477E2BF41E1BD32E000EA12B /* GPX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BF31E1BD32E000EA12B /* GPX.swift */; };
+		477E2BF61E1BD668000EA12B /* MKGPX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BF51E1BD668000EA12B /* MKGPX.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		477E2BDB1E1BCF22000EA12B /* TraxYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraxYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		477E2BDE1E1BCF22000EA12B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		477E2BE01E1BCF22000EA12B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		477E2BE31E1BCF22000EA12B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		477E2BE51E1BCF22000EA12B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		477E2BE81E1BCF22000EA12B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		477E2BEA1E1BCF22000EA12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		477E2BF11E1BCFDA000EA12B /* GPXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPXViewController.swift; sourceTree = "<group>"; };
+		477E2BF31E1BD32E000EA12B /* GPX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPX.swift; sourceTree = "<group>"; };
+		477E2BF51E1BD668000EA12B /* MKGPX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKGPX.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,24 @@
 		477E2BDD1E1BCF22000EA12B /* TraxYou */ = {
 			isa = PBXGroup;
 			children = (
-				477E2BDE1E1BCF22000EA12B /* AppDelegate.swift */,
-				477E2BE01E1BCF22000EA12B /* ViewController.swift */,
+				477E2BF01E1BCF9E000EA12B /* Supporting */,
 				477E2BE21E1BCF22000EA12B /* Main.storyboard */,
+				477E2BF11E1BCFDA000EA12B /* GPXViewController.swift */,
+				477E2BF51E1BD668000EA12B /* MKGPX.swift */,
+			);
+			path = TraxYou;
+			sourceTree = "<group>";
+		};
+		477E2BF01E1BCF9E000EA12B /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				477E2BF31E1BD32E000EA12B /* GPX.swift */,
+				477E2BDE1E1BCF22000EA12B /* AppDelegate.swift */,
 				477E2BE51E1BCF22000EA12B /* Assets.xcassets */,
 				477E2BE71E1BCF22000EA12B /* LaunchScreen.storyboard */,
 				477E2BEA1E1BCF22000EA12B /* Info.plist */,
 			);
-			path = TraxYou;
+			name = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				477E2BE11E1BCF22000EA12B /* ViewController.swift in Sources */,
+				477E2BF21E1BCFDA000EA12B /* GPXViewController.swift in Sources */,
+				477E2BF61E1BD668000EA12B /* MKGPX.swift in Sources */,
 				477E2BDF1E1BCF22000EA12B /* AppDelegate.swift in Sources */,
+				477E2BF41E1BD32E000EA12B /* GPX.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
