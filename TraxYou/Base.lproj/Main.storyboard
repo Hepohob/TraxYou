@@ -24,6 +24,10 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IrM-gQ-cOe">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Qwy-kc-Nhl" appends="YES" id="Zpb-49-ODq"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,13 +45,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Qwy-kc-Nhl">
+                    <connections>
+                        <action selector="addWaypoint:" destination="BYZ-38-t0r" id="88m-WN-t5M"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="820" y="44"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="ufg-6K-x25">
             <objects>
-                <viewController id="697-6c-Pug" customClass="ImageViewController" customModule="ScrollViewExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="697-6c-Pug" customClass="ImageViewController" customModule="TraxYou" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Npf-dW-bPW"/>
                         <viewControllerLayoutGuide type="bottom" id="KFF-5c-7Y3"/>
