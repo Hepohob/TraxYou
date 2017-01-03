@@ -32,7 +32,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func clearWaypoints() {
-        mapView?.removeAnnotation(mapView.annotations as! MKAnnotation)
+        mapView?.removeAnnotations(mapView.annotations )
     }
     
     private func addWaypoints(_ waypoints:[GPX.Waypoint]) {
@@ -45,20 +45,48 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
         gpxURL = NSURL(string: "http://cs193p.stanford.edu/Vacation.gpx") as URL?
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: MKMapView delegates
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var view: MKAnnotationView! = mapView.dequeueReusableAnnotationView(withIdentifier: Constants.AnnotationViewReuseIdentifier)
+        if view == nil {
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.AnnotationViewReuseIdentifier)
+            view.canShowCallout = true
+        } else {
+            view.annotation = annotation
+        }
+        
+        view.leftCalloutAccessoryView = nil
+        if let waypoint = annotation as? GPX.Waypoint {
+            if waypoint.thumbnailURL != nil {
+                view.leftCalloutAccessoryView = UIButton(frame: Constants.LeftCalloutFrame)
+            }
+        }
+        
+        return view
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async {
+            if let thumbnailImageButton = view.leftCalloutAccessoryView as? UIButton,
+                let url = (view.annotation as? GPX.Waypoint)?.thumbnailURL,
+                let imageData = try? Data(contentsOf: url as URL),
+                let image = UIImage(data: imageData) {
+                DispatchQueue.main.async {
+                    thumbnailImageButton.setImage(image, for: UIControlState())
+                }
+            }
+        }
     }
-    */
+
+
+    // MARK: Constants
+    
+    private struct Constants {
+        static let LeftCalloutFrame = CGRect(x: 0, y: 0, width: 59, height: 59) // sad face
+        static let AnnotationViewReuseIdentifier = "waypoint"
+        static let ShowImageSegue = "Show Image"
+        static let EditUserWaypoint = "Edit Waypoint"
+    }
 
 }

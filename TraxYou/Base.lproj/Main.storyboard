@@ -23,15 +23,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IrM-gQ-cOe">
-                                <rect key="frame" x="16" y="28" width="343" height="631"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IrM-gQ-cOe" secondAttribute="bottom" constant="8" symbolic="YES" id="EI5-ym-t89"/>
-                            <constraint firstItem="IrM-gQ-cOe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EZF-Q9-20i"/>
-                            <constraint firstItem="IrM-gQ-cOe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="sLm-OU-5qj"/>
-                            <constraint firstItem="IrM-gQ-cOe" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="wEh-1a-qxr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IrM-gQ-cOe" secondAttribute="bottom" id="EI5-ym-t89"/>
+                            <constraint firstItem="IrM-gQ-cOe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="EZF-Q9-20i"/>
+                            <constraint firstItem="IrM-gQ-cOe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sLm-OU-5qj"/>
+                            <constraint firstItem="IrM-gQ-cOe" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="16" id="wEh-1a-qxr"/>
                         </constraints>
                     </view>
                     <connections>
