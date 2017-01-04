@@ -15,6 +15,7 @@
 		477E2BF41E1BD32E000EA12B /* GPX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BF31E1BD32E000EA12B /* GPX.swift */; };
 		477E2BF61E1BD668000EA12B /* MKGPX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BF51E1BD668000EA12B /* MKGPX.swift */; };
 		477E2BF81E1BE31E000EA12B /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BF71E1BE31E000EA12B /* ImageViewController.swift */; };
+		477E2BFA1E1CDB7E000EA12B /* EditWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2BF91E1CDB7E000EA12B /* EditWaypointViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		477E2BF31E1BD32E000EA12B /* GPX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPX.swift; sourceTree = "<group>"; };
 		477E2BF51E1BD668000EA12B /* MKGPX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKGPX.swift; sourceTree = "<group>"; };
 		477E2BF71E1BE31E000EA12B /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		477E2BF91E1CDB7E000EA12B /* EditWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWaypointViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				477E2BF11E1BCFDA000EA12B /* GPXViewController.swift */,
 				477E2BF51E1BD668000EA12B /* MKGPX.swift */,
 				477E2BF71E1BE31E000EA12B /* ImageViewController.swift */,
+				477E2BF91E1CDB7E000EA12B /* EditWaypointViewController.swift */,
 			);
 			path = TraxYou;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			files = (
 				477E2BF21E1BCFDA000EA12B /* GPXViewController.swift in Sources */,
 				477E2BF61E1BD668000EA12B /* MKGPX.swift in Sources */,
+				477E2BFA1E1CDB7E000EA12B /* EditWaypointViewController.swift in Sources */,
 				477E2BF81E1BE31E000EA12B /* ImageViewController.swift in Sources */,
 				477E2BDF1E1BCF22000EA12B /* AppDelegate.swift in Sources */,
 				477E2BF41E1BD32E000EA12B /* GPX.swift in Sources */,

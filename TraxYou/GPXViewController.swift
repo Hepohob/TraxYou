@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class GPXViewController: UIViewController, MKMapViewDelegate {
+class GPXViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
@@ -46,6 +46,18 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
         title = "Trax You"
     }
 
+    // Unwind target (selects just-edited waypoint)
+    
+    @IBAction func updatedUserWaypoint(_ segue: UIStoryboardSegue) {
+        selectWaypoint((segue.source.contentViewController as? EditWaypointViewController)?.waypointToEdit)
+    }
+    
+    func selectWaypoint(_ waypoint:GPX.Waypoint?) {
+        if waypoint != nil {
+            mapView.selectAnnotation(waypoint!, animated: true)
+        }
+    }
+    
     //MARK: MKMapView delegates
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -57,12 +69,20 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
             view.annotation = annotation
         }
         
+        view.rightCalloutAccessoryView = nil
         view.leftCalloutAccessoryView = nil
+        
         view.isDraggable = annotation is EditableWaypoint
+        
         if let waypoint = annotation as? GPX.Waypoint {
             if waypoint.thumbnailURL != nil {
                 view.leftCalloutAccessoryView = UIButton(frame: Constants.LeftCalloutFrame)
             }
+
+            if waypoint is EditableWaypoint {
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }
+
         }
         
         return view
@@ -84,6 +104,9 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.leftCalloutAccessoryView {
             performSegue(withIdentifier: Constants.ShowImageSegue, sender: view)
+        } else if control == view.rightCalloutAccessoryView {
+            mapView.deselectAnnotation(view.annotation, animated: true)
+            performSegue(withIdentifier: Constants.EditUserWaypoint, sender: view)
         }
     }
 
@@ -118,7 +141,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
                 ivc.title = waypoint?.name
             }
         }
-     /*   else if segue.identifier == Constants.EditUserWaypoint {
+        else if segue.identifier == Constants.EditUserWaypoint {
             if let editableWaypoint = waypoint as? EditableWaypoint,
                 let ewvc = destination as? EditWaypointViewController {
                 if let ppc = ewvc.popoverPresentationController {
@@ -128,7 +151,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
                 ewvc.waypointToEdit = editableWaypoint
             }
         }
- */
+ 
     }
 
 }
