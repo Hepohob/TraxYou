@@ -58,6 +58,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
         }
         
         view.leftCalloutAccessoryView = nil
+        view.isDraggable = annotation is EditableWaypoint
         if let waypoint = annotation as? GPX.Waypoint {
             if waypoint.thumbnailURL != nil {
                 view.leftCalloutAccessoryView = UIButton(frame: Constants.LeftCalloutFrame)
@@ -89,7 +90,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate {
     @IBAction func addWaypoint(_ sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.began {
             let coordinate = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
-            let waypoint = GPX.Waypoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            let waypoint = EditableWaypoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
             waypoint.name = "Some name"
             mapView.addAnnotation(waypoint)
         }
